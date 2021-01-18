@@ -81,7 +81,7 @@ namespace DoubleTransposition.Services
         /// <param name="rowNumber">Number of rows for permutation matrix</param>
         /// <param name="colNumber">Number of columns for permutation matrix</param>
         /// <returns>Clean char array padded with whitespaces</returns>
-        public char[] PrepareText(string data, int rowNumber, int colNumber)
+        private char[] PrepareText(string data, int rowNumber, int colNumber)
         {
             StringBuilder sb = new StringBuilder();
             int matrixSize = rowNumber * colNumber;
@@ -109,7 +109,7 @@ namespace DoubleTransposition.Services
         /// <param name="colNumber">Number of columns</param>
         /// <param name="offset">Offset from which to start reading data</param>
         /// <returns>colNumber*rowNumber of characters in a matrix</returns>
-        public char[,] PrepareMatrix(char[] data, int rowNumber, int colNumber, int offset)
+        private char[,] PrepareMatrix(char[] data, int rowNumber, int colNumber, int offset)
         {
             char[,] matrix = new char[rowNumber, colNumber];
 
@@ -128,7 +128,7 @@ namespace DoubleTransposition.Services
         /// <param name="colNumber">Number of columns of the input matrix</param>
         /// <param name="transposingKey">List of integers which denote how the rows should be transposed</param>
         /// <returns>New transposed matrix</returns>
-        public char[,] EncryptTransposeRows(char[,] data, int rowNumber, int colNumber, IList<int> transposingKey)
+        private char[,] EncryptTransposeRows(char[,] data, int rowNumber, int colNumber, IList<int> transposingKey)
         {
             char[,] resultMatrix = new char[rowNumber, colNumber];
 
@@ -147,7 +147,7 @@ namespace DoubleTransposition.Services
         /// <param name="colNumber">Number of columns of the input matrix</param>
         /// <param name="transposingKey">List of integers which denote how the columns should be transposed</param>
         /// <returns>New transposed matrix</returns>
-        public char[,] EncryptTransposeColumns(char[,] data, int rowNumber, int colNumber, IList<int> transposingKey)
+        private char[,] EncryptTransposeColumns(char[,] data, int rowNumber, int colNumber, IList<int> transposingKey)
         {
             char[,] resultMatrix = new char[rowNumber, colNumber];
 
@@ -169,7 +169,7 @@ namespace DoubleTransposition.Services
         /// <param name="colNumber">Number of columns of the input matrix</param>
         /// <param name="transposingKey">List of integers which denote how the rows should be transposed</param>
         /// <returns>New transposed matrix</returns>
-        public char[,] DecryptTransposeRows(char[,] data, int rowNumber, int colNumber, IList<int> transposingKey)
+        private char[,] DecryptTransposeRows(char[,] data, int rowNumber, int colNumber, IList<int> transposingKey)
         {
             char[,] resultMatrix = new char[rowNumber, colNumber];
 
@@ -189,7 +189,7 @@ namespace DoubleTransposition.Services
         /// <param name="colNumber">Number of columns of the input matrix</param>
         /// <param name="transposingKey">List of integers which denote how the columns should be transposed</param>
         /// <returns>New transposed matrix</returns>
-        public char[,] DecryptTransposeColumns(char[,] data, int rowNumber, int colNumber, IList<int> transposingKey)
+        private char[,] DecryptTransposeColumns(char[,] data, int rowNumber, int colNumber, IList<int> transposingKey)
         {
             char[,] resultMatrix = new char[rowNumber, colNumber];
 
