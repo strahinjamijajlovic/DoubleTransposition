@@ -1,0 +1,59 @@
+﻿@model DoubleTransposition.Models.DoubleTranspositionViewModel
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div>
+    <div>
+        <form method="post" asp-action="ProcessFile" enctype=multipart/form-data>
+            <div asp-validation-summary="All" class="text-danger"></div>
+            <div class="flex flex-wrap items-start justify-start">
+                <div class="w-100">
+                    <div class="form-group justify-content-around">
+                        Ideja mi je bila da mogu da se unesu ključevi za permutaciju kolona i vrsta matrice. Nisam želeo da ovo sakrijem negde u kodu, jer mi takva implementacija nema smisla. 
+                        Uostalom, kakav je to program kome ja ne mogu da unsem dokument i ključ, a da dobijem odgovor u vidu kriptovanog ili dekriptovanog fajla u ovom slučaju. <br />
+                        Ukoliko nije najjasnije, ključeve treba uneti kao indekse razdvojene zarezom, pri čemu indeksi kreću od nule. U suštini validacija proverava format, ali ne proverava unete vrednosti. <br />
+                        Tako da je moguće slomiti program ukoliko se unese ključ koji nema nulu ili nema lepo uzastopne vrednosti u ključu, ali mi nije bio cilj das to skroz zategnem iako je moguće dodati to u backend validaciju.<br />
+                        Takođe sam se trudio da servis za enkripciju bude koliko-toliko razložen i čitljiv sa dokumentacijom pojedinačnih metoda. Ukoliko ima nekih nejasnoća, stojim Vam na raspolaganju.
+                    </div>
+                </div>
+                <div class="w-100">
+                    <div class="form-group">
+                        <label asp-for="RowsKey"></label>
+                        <input asp-for="RowsKey" class="form-control" title="Key should be entered in format '0,1,2,3,4', starting with index 0, up to desired number of rows for the transposition matrix" />
+                        <span asp-validation-for="RowsKey" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="w-100">
+                    <div class="form-group">
+                        <label asp-for="ColumnsKey"></label>
+                        <input asp-for="ColumnsKey" class="form-control" title="Key should be entered in format '0,1,2,3,4', starting with index 0, up to desired number of columns for the transposition matrix" />
+                        <span asp-validation-for="ColumnsKey" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="w-100">
+                    <div class="form-group">
+                        <label asp-for="AlgorithmModes"></label>
+                        <select class="form-control" asp-for="SelectedMode" asp-items="@Model.AlgorithmModes"></select>
+                    </div>
+                </div>
+                <div class="w-25">
+                    <div class="form-group">
+                        <label asp-for="FileToProcess"></label>
+                        <input asp-for="FileToProcess" class="form-control overflow-hidden" accept=".txt" />
+                        <span asp-validation-for="FileToProcess" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="w-100">
+                    <div class="text-center">
+                        <button type="submit">Process File</button>
+                    </div>
+                </div>
+            </div><!-- close w-100 -->
+        </form>
+    </div>
+</div><!-- close w-100 -->
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
